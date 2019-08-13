@@ -40,7 +40,7 @@ cd scrubfu
 
 ### Step 2: Get scrubfu and other tools
 
-Log into the Artifactory Docker Repo with your username and password, and pull scrubfu:
+Log into the Docker Hub and pull scrubfu:
 
 ```bash
 docker login
