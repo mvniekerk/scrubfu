@@ -114,10 +114,10 @@ The **```action name```** is required (for obvious reasons), but both the **```f
 
 | Tag |  Abbreviation | Description | Example Declaration |
 | ----- | ----- | ----- | ----- |
-| MASK | MA |  Masks the field. | ``~``MA:3,2;#;'@','.'``~`` |
-| REPLACE | RE | Replaces non-iteratively using a set of find and replace tuples. |  ``~``RE:address,addr;'zone','co.uk' ``~`` |
-| RANDOM | RA | Returns random data. | ``~``RA:AAAANN``~`` |
-| FUZZ | FZ | Returns pseudo-random data. | ``~``FZ``~`` |
+| MASK | MA |  Masks the field. | ``~MA:3,2;#;'@','.'~`` |
+| REPLACE | RE | Replaces non-iteratively using a set of find and replace tuples. |  ``~RE:address,addr;'zone','co.uk'~`` |
+| RANDOM | RA | Returns random data. | ``~RA:AAAANN~`` |
+| FUZZ | FZ | Returns pseudo-random data. | ``~FZ~`` |
 
 ### MASK action
 
