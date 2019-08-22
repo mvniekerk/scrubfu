@@ -69,7 +69,7 @@ COMMENT ON COLUMN _secret.person.residencies IS '~FZ[0]~';
 Before:
 
 | id | first_name | surname | age* | mobile_number | email | city | residencies |
-| ----- |:------------- |:------------- | ---- | --------------- | ----------------------------- |
+| ----- |------------- |------------- | ---- | --------------- | ----------------------------- |  --------------- |  --------------- | 
 | 45 | Adalie | Gadzinksi | 22 | +256(012) 555-8789 | adalie@gadzinksi.za.net | Johannesburg | '{"St, James Court","Waverly Village","Sandton Suites"}'
 | 46 | Adalina | Zanders | 35 | +001(211) 555-1526 | az@domain.com | Pretoria | '{"Waverly Court","Mandela Square"}'
 | 47 | Adalind | O'Hare| 19 | +23(24) 555-8756 | a.ohare@companyname.co.za | Cape Town |'{"Alexander Hill","V&A Apartments"}'
@@ -77,7 +77,7 @@ Before:
 After:
 
 | id | first_name | surname | age* | mobile_number | email | city | residencies |
-| ----- |:------------- |:------------- | ---- | --------------- | ----------------------------- |
+| ----- | ------------- | ------------- | ---- | --------------- | ----------------------------- |  --------------- |  --------------- | 
 | 45 | Ada**e | Rxbsyaqpk | 22 | +256(012) 555-8789 | ######@#########.##.### | Tokyo | '{"Pz. Mxuis Npewb","Waverly Village","Sandton Suites"}'
 | 46 | Ada***a | Avfewzq | 35 | +001(211) 555-1526 | ##@#####.### | S�o Paulo | '{"Jtyicvbq Lsxze","Mandela Square"}'
 | 47 | Ada***d | X'Cjal| 19 | +023(724) 555-8756 | #.#####@###########.##.## | London |'{"Giuttybxe Kbci","V&A Apartments"}'
@@ -114,10 +114,10 @@ The **```action name```** is required (for obvious reasons), but both the **```f
 
 | Tag |  Abbreviation | Description | Example Declaration |
 | ----- | ----- | ----- | ----- |
-| MASK | MA |  Masks the field. | ``~``MA:3,2;#;'@','.'``~`` |
-| REPLACE | RE | Replaces non-iteratively using a set of find and replace tuples. |  ``~``RE:address,addr;'zone','co.uk' ``~`` |
-| RANDOM | RA | Returns random data. | ``~``RA:AAAANN``~`` |
-| FUZZ | FZ | Returns pseudo-random data. | ``~``FZ``~`` |
+| MASK | MA |  Masks the field. | ``~MA:3,2;#;'@','.'~`` |
+| REPLACE | RE | Replaces non-iteratively using a set of find and replace tuples. |  ``~RE:address,addr;'zone','co.uk'~`` |
+| RANDOM | RA | Returns random data. | ``~RA:AAAANN~`` |
+| FUZZ | FZ | Returns pseudo-random data. | ``~FZ~`` |
 
 ### MASK action
 
