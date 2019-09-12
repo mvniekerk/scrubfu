@@ -94,7 +94,8 @@ jobs:
       - run: apk --no-cache add --update curl bash git openssh
       # Install Fossa
       - run: |
-          curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | tac | tac | sudo bash
+          #curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | tac | tac | sudo bash
+          curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | sudo bash -s v1.0.0          
       # Install Maven
       - checkout
       - run: FOSSA_API_KEY=$FOSSA_API_KEY fossa init
