@@ -94,7 +94,7 @@ Every Scrubfu tag has an associated action, but may also include options that ma
 Scrubfu tags typically consist of three main sections, namely the **```action name```**, the **```field content location```** and the **```action options```**. 
 The **```action name```** is required (for obvious reasons), but both the **```field content location```** and **```action options```** may be optional depending on the action type.
 
-![Scrubfu-Tag Syntax Diagram](https://raw.githubusercontent.com/GrindrodBank/scrubfu/1304-update-documents-to-reflect-current-functionality/doc/images/Scrubfu-Tag-Syntax-Diagram.jpg?token=ACUT54QFWBXF4XH4STONEJ25HG37Y "Scrubfu Tag Syntax Diagram")
+![Scrubfu-Tag Syntax Diagram](images/Scrubfu-Tag-Syntax-Diagram.jpg?token=ACUT54QFWBXF4XH4STONEJ25HG37Y "Scrubfu Tag Syntax Diagram")
 
 * The tag action must be specified before the first ":".  
 
