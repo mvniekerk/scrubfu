@@ -17,6 +17,8 @@ jobs:
       - run: apk upgrade
       - run: apk --no-cache add --update git openssh
       - checkout
+      - attach_workspace:
+          at: ~/build/workspace
       - run: |
          sonar-scanner \
           -Dsonar.host.url=https://sonarcloud.io \
@@ -28,7 +30,8 @@ jobs:
           -Dsonar.projectBaseDir=$CI_PROJECT_DIR \
           -Dsonar.sourceEncoding=UTF-8 \
           -Dsonar.test.inclusions=tests/**/* \
-          -Dsonar.sources=.
+          -Dsonar.sources=. \
+          -Dsonar.cs.opencover.reportsPaths=workspace/tests/Scrubfu.Tests/coverage.opencover.xml
   test:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
@@ -42,7 +45,11 @@ jobs:
       - checkout
       - run: dotnet restore
       - run: dotnet build
-      - run: dotnet test --no-build 
+      - run: dotnet test --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      - persist_to_workspace:
+          root: ~/build
+          paths:
+            - tests/*
 
   license-headers:
     docker:
@@ -124,7 +131,9 @@ workflows:
   build_test_and_push:
     jobs:
       - test
-      - static-analysis
+      - static-analysis:
+          requires:
+          - test
       - vulnerability-test
       - license-headers
       - fossa-scan:
