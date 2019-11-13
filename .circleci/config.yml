@@ -18,7 +18,7 @@ jobs:
       - run: apk --no-cache add --update git openssh
       - checkout
       - attach_workspace:
-          at: ~/build/workspace
+          at: ~/workspace
       - run: |
          sonar-scanner \
           -Dsonar.host.url=https://sonarcloud.io \
@@ -31,7 +31,7 @@ jobs:
           -Dsonar.sourceEncoding=UTF-8 \
           -Dsonar.test.inclusions=tests/**/* \
           -Dsonar.sources=. \
-          -Dsonar.cs.opencover.reportsPaths=workspace/tests/Scrubfu.Tests/coverage.opencover.xml
+          -Dsonar.cs.opencover.reportsPaths=../workspace/tests/Scrubfu.Tests/coverage.opencover.xml
   test:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
