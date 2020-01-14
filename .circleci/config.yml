@@ -30,7 +30,6 @@ jobs:
           -Dsonar.projectBaseDir=$CI_PROJECT_DIR \
           -Dsonar.sourceEncoding=UTF-8 \
           -Dsonar.test.inclusions=tests/**/* \
-          -Dsonar.sources=. \
           -Dsonar.cs.opencover.reportsPaths=../workspace/tests/Scrubfu.Tests/coverage.opencover.xml
   test:
     docker:
