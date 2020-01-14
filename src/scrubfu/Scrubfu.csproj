@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>scrubfu</AssemblyName>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>Scrubfu</PackageId>
     <Version>0.1.0</Version>
     <Authors>Darin Morris, Paul van Coller</Authors>
@@ -14,13 +14,12 @@
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/GrindrodBank/scrubfu</PackageProjectUrl>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <ReleaseVersion>0.1.0</ReleaseVersion>
+    <ReleaseVersion>1.1</ReleaseVersion>
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
-    <PackageReference Include="NLog.Config" Version="4.6.6" />
+    <PackageReference Include="NLog.Config" Version="4.6.8" />
   </ItemGroup>
 
   <ItemGroup>
