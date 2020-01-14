@@ -184,4 +184,5 @@ All project documentation is currently available within the /doc folder.
 &copy; Copyright 2019, Grindrod Bank Limited, and distributed under the MIT License.
 
 ## License
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FGrindrodBank%2Fscrubfu.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FGrindrodBank%2Fscrubfu?ref=badge_large)

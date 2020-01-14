@@ -30,11 +30,10 @@ jobs:
           -Dsonar.projectBaseDir=$CI_PROJECT_DIR \
           -Dsonar.sourceEncoding=UTF-8 \
           -Dsonar.test.inclusions=tests/**/* \
-          -Dsonar.sources=. \
           -Dsonar.cs.opencover.reportsPaths=../workspace/tests/Scrubfu.Tests/coverage.opencover.xml
   test:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     working_directory: ~/build
     
     steps:
@@ -92,7 +91,7 @@ jobs:
           docker push grindrodbank/scrubfu:latest
   fossa-scan:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     working_directory: ~/build
     steps:
       # Update, upgrade, then install su, curl, bash, git and openssh
@@ -112,7 +111,7 @@ jobs:
       - run: FOSSA_API_KEY=$FOSSA_API_KEY fossa test
   vulnerability-test:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.2-alpine
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     working_directory: ~/build
     steps:
       # Update, upgrade, then install sudo, nodejs, npm, git and openssh
