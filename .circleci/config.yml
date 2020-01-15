@@ -27,9 +27,10 @@ jobs:
           -Dsonar.organization=$SONAR_ORG \
           -Dsonar.login=$SONAR_AUTH_TOKEN \
           -Dsonar.branch.name=$CIRCLE_BRANCH \
+          -Dsonar.projectBaseDir="src" \
           -Dsonar.sourceEncoding=UTF-8 \
-          -Dsonar.test.inclusions=tests/**/* \
-          -Dsonar.cs.opencover.reportsPaths=../workspace/tests/Scrubfu.Tests/coverage.opencover.xml
+          -Dsonar.test.inclusions="tests/**/*" \
+          -Dsonar.cs.opencover.reportsPaths="../workspace/tests/Scrubfu.Tests/coverage.opencover.xml"
   test:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
