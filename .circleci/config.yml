@@ -9,7 +9,7 @@ version: 2.1
 jobs:
   static-analysis:
     docker:
-      - image: newtmitch/sonar-scanner:alpine
+      - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     working_directory: ~/build
     steps:
       # Update, upgrade, then install git and openssh for a clean checkout
@@ -19,19 +19,20 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/workspace
+      - run: dotnet tool install --global dotnet-sonarscanner || true
       - run: |
-         sonar-scanner \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.projectKey=$SONAR_PROJECT_KEY \
-          -Dsonar.projectName=$SONAR_PROJECT_KEY \
-          -Dsonar.organization=$SONAR_ORG \
-          -Dsonar.login=$SONAR_AUTH_TOKEN \
-          -Dsonar.branch.name=master \
-          -Dsonar.projectBaseDir="$PWD" \
-          -Dsonar.sources="src" \
-          -Dsonar.sourceEncoding=UTF-8 \
-          -Dsonar.test.inclusions="tests/**/*" \
-          -Dsonar.cs.opencover.reportsPaths="../workspace/tests/Scrubfu.Tests/coverage.opencover.xml"
+          dotnet sonarscanner begin /n:${baseImageName} /key:${baseImageName} \
+          /d:sonar.host.url=https://sonarcloud.io 
+          /d:sonar.projectKey=$SONAR_PROJECT_KEY \
+          /d:sonar.projectName=$SONAR_PROJECT_KEY \
+          /d:sonar.organization=$SONAR_ORG \
+          /d:sonar.login=${SONAR_AUTH_TOKEN} \
+          /d:sonar.branch.name=master \
+          /d:sonar.test.inclusions=tests/Scrubfu.Tests/**/* \
+          /d:sonar.sourceEncoding=UTF-8 \
+          /d:sonar.cs.opencover.reportsPaths="../workspace/tests/Scrubfu.Tests/coverage.opencover.xml"
+      - run: dotnet build scrubfu.sln
+      - run: dotnet sonarscanner end /d:sonar.login=${SONAR_AUTH_TOKEN}
   test:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
