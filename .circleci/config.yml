@@ -21,7 +21,7 @@ jobs:
           at: ~/workspace
       - run: dotnet tool install --global dotnet-sonarscanner || true
       - run: |
-          dotnet sonarscanner begin /n:${baseImageName} /key:${baseImageName} \
+          dotnet sonarscanner begin /n:$SONAR_PROJECT_KEY /key:$SONAR_PROJECT_KEY \
           /d:sonar.host.url=https://sonarcloud.io 
           /d:sonar.projectKey=$SONAR_PROJECT_KEY \
           /d:sonar.projectName=$SONAR_PROJECT_KEY \
