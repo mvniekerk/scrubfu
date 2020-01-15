@@ -27,7 +27,6 @@ jobs:
           -Dsonar.organization=$SONAR_ORG \
           -Dsonar.login=$SONAR_AUTH_TOKEN \
           -Dsonar.branch.name=$CIRCLE_BRANCH \
-          -Dsonar.projectBaseDir=$CI_PROJECT_DIR \
           -Dsonar.sourceEncoding=UTF-8 \
           -Dsonar.test.inclusions=tests/**/* \
           -Dsonar.cs.opencover.reportsPaths=../workspace/tests/Scrubfu.Tests/coverage.opencover.xml
