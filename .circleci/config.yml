@@ -20,7 +20,7 @@ jobs:
       - attach_workspace:
           at: ~/workspace
       - run: export TERM='xterm'
-      - run: export PATH="$PATH:/home/jenkins/.dotnet/tools"
+      - run: export PATH="$PATH:/root/.dotnet/tools"
       - run: dotnet tool install --global dotnet-sonarscanner || true
       - run: |
           dotnet sonarscanner begin /n:$SONAR_PROJECT_KEY /key:$SONAR_PROJECT_KEY \
