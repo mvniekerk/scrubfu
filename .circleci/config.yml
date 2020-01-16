@@ -19,7 +19,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/workspace
-     - run: |
+      - run: |
         sh """
           export TERM='xterm'
           export PATH="$PATH:/root/.dotnet/tools"
