@@ -20,7 +20,7 @@ jobs:
       - attach_workspace:
           at: ~/workspace
       - run: |
-        sh """
+         sh """
           export TERM='xterm'
           export PATH="$PATH:/root/.dotnet/tools"
           dotnet tool install --global dotnet-sonarscanner || true
@@ -36,7 +36,7 @@ jobs:
             /d:sonar.cs.opencover.reportsPaths="../workspace/tests/Scrubfu.Tests/coverage.opencover.xml"
           dotnet build scrubfu.sln
           dotnet sonarscanner end /d:sonar.login=${SONAR_AUTH_TOKEN}
-        """
+         """
   test:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
