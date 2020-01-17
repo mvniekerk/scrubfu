@@ -11,6 +11,9 @@ jobs:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     working_directory: ~/build
+    shell: /bin/sh -leo pipefail
+    environment:
+      - BASH_ENV: /etc/profile
     steps:
       # Update, upgrade, then install git and openssh for a clean checkout
       - run: apk update
@@ -28,8 +31,8 @@ jobs:
           echo Org ${SONAR_ORG}
           dotnet sonarscanner begin -k:${SONAR_PROJECT_KEY} \
             -d:sonar.host.url=https://sonarcloud.io 
-            -d:sonar.organization=${SONAR_ORG} \
-            -d:sonar.login=${SONAR_AUTH_TOKEN} \
+            -d:sonar.organization=$SONAR_ORG \
+            -d:sonar.login=$SONAR_AUTH_TOKEN \
             -d:sonar.branch.name=master \
             -d:sonar.test.inclusions="tests/Scrubfu.Tests/**/*" \
             -d:sonar.sourceEncoding=UTF-8 \
