@@ -11,9 +11,6 @@ jobs:
     docker:
       - image: mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
     working_directory: ~/build
-    shell: /bin/sh -leo pipefail
-    environment:
-      - BASH_ENV: /etc/profile
     steps:
       # Update, upgrade, then install git and openssh for a clean checkout
       - run: apk update
