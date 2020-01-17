@@ -23,7 +23,10 @@ jobs:
           export TERM="xterm"
           export PATH="$PATH:/root/.dotnet/tools"
           dotnet tool install --global dotnet-sonarscanner || true
-          dotnet sonarscanner begin -k:"$SONAR_PROJECT_KEY" \
+          echo PK ${SONAR_PROJECT_KEY}
+          echo AUTH TOKEN ${SONAR_AUTH_TOKEN}
+          echo Org ${SONAR_ORG}
+          dotnet sonarscanner begin -k:${SONAR_PROJECT_KEY} \
             -d:sonar.host.url=https://sonarcloud.io 
             -d:sonar.organization=${SONAR_ORG} \
             -d:sonar.login=${SONAR_AUTH_TOKEN} \
