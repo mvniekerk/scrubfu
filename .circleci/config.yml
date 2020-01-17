@@ -24,13 +24,13 @@ jobs:
           export PATH="$PATH:/root/.dotnet/tools"
           dotnet tool install --global dotnet-sonarscanner || true
           dotnet sonarscanner begin /k:"$SONAR_PROJECT_KEY" \
-            /d:sonar.host.url=https://sonarcloud.io 
-            /d:sonar.organization=$SONAR_ORG \
-            /d:sonar.login=${SONAR_AUTH_TOKEN} \
-            /d:sonar.branch.name=master \
-            /d:sonar.test.inclusions="tests/Scrubfu.Tests/**/*" \
-            /d:sonar.sourceEncoding=UTF-8 \
-            /d:sonar.cs.opencover.reportsPaths="../workspace/tests/Scrubfu.Tests/coverage.opencover.xml"
+            -Dsonar.host.url=https://sonarcloud.io 
+            -Dsonar.organization=$SONAR_ORG \
+            -Dsonar.login=${SONAR_AUTH_TOKEN} \
+            -Dsonar.branch.name=master \
+            -Dsonar.test.inclusions="tests/Scrubfu.Tests/**/*" \
+            -Dsonar.sourceEncoding=UTF-8 \
+            -Dsonar.cs.opencover.reportsPaths="../workspace/tests/Scrubfu.Tests/coverage.opencover.xml"
           dotnet build scrubfu.sln
           dotnet sonarscanner end
   test:
