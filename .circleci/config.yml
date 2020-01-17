@@ -24,6 +24,9 @@ jobs:
           at: ~/workspace
       - run: |
           export TERM="xterm"
+          dotnet --version
+          java -version
+          dotnet --list-runtimes
           export PATH="$PATH:/root/.dotnet/tools"
           dotnet tool install --global dotnet-sonarscanner || true
           dotnet sonarscanner begin \
