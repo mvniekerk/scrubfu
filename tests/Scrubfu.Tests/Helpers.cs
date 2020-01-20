@@ -72,28 +72,56 @@ namespace Scrubfu.Tests
             if (File.Exists(filename))
                 File.Delete(filename);
 
-            File.AppendAllText(filename,
-                string.Concat("CREATE TABLE public.employees (\r\n",
-                            "employee_id smallint NOT NULL,\r\n",
-                            "last_name character varying(20) NOT NULL,\r\n",
-                            "first_name character varying(10) NOT NULL,\r\n",
-                            "title character varying(30),\r\n",
-                            "title_of_courtesy character varying(25),\r\n",
-                            "birth_date date,\r\n",
-                            "hire_date date,\r\n",
-                            "address character varying(60),\r\n",
-                            "city character varying(15),\r\n",
-                            "region character varying(15),\r\n",
-                            "postal_code character varying(10),\r\n",
-                            "country character varying(15),\r\n",
-                            "home_phone character varying(24),\r\n",
-                            "extension character varying(4),\r\n",
-                            "photo bytea,\r\n",
-                            "notes text,\r\n",
-                            "reports_to smallint,\r\n",
-                            "photo_path character varying(255),\r\n",
-                            "email text,\r\n",
-                            ");\r\n"));
+            if (useArray)
+            {
+                File.AppendAllText(filename,
+                    string.Concat("CREATE TABLE public.employees (\r\n",
+                                "employee_id smallint NOT NULL,\r\n",
+                                "last_name character varying(20) NOT NULL,\r\n",
+                                "first_name character varying(10) NOT NULL,\r\n",
+                                "title character varying(30),\r\n",
+                                "title_of_courtesy character varying(25),\r\n",
+                                "birth_date date,\r\n",
+                                "hire_date date,\r\n",
+                                "address character varying(60),\r\n",
+                                "city character varying(15),\r\n",
+                                "region character varying(15),\r\n",
+                                "postal_code character varying(10),\r\n",
+                                "country character varying(15),\r\n",
+                                "home_phone character varying(24),\r\n",
+                                "extension character varying(4),\r\n",
+                                "photo bytea,\r\n",
+                                "notes text,\r\n",
+                                "reports_to smallint,\r\n",
+                                "photo_path character varying(255),\r\n",
+                                "email text[],\r\n",
+                                ");\r\n"));
+            }
+            else
+            {
+                File.AppendAllText(filename,
+                    string.Concat("CREATE TABLE public.employees (\r\n",
+                                "employee_id smallint NOT NULL,\r\n",
+                                "last_name character varying(20) NOT NULL,\r\n",
+                                "first_name character varying(10) NOT NULL,\r\n",
+                                "title character varying(30),\r\n",
+                                "title_of_courtesy character varying(25),\r\n",
+                                "birth_date date,\r\n",
+                                "hire_date date,\r\n",
+                                "address character varying(60),\r\n",
+                                "city character varying(15),\r\n",
+                                "region character varying(15),\r\n",
+                                "postal_code character varying(10),\r\n",
+                                "country character varying(15),\r\n",
+                                "home_phone character varying(24),\r\n",
+                                "extension character varying(4),\r\n",
+                                "photo bytea,\r\n",
+                                "notes text,\r\n",
+                                "reports_to smallint,\r\n",
+                                "photo_path character varying(255),\r\n",
+                                "email text,\r\n",
+                                ");\r\n"));
+            }
 
             File.AppendAllText(filename, "\r\n");
 
