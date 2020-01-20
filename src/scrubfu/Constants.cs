@@ -45,18 +45,6 @@ namespace Scrubfu
         public const string SqlCommand_INSERT_INTO_PARTIAL_REGEX = @"insert into(.)* values( )*(.|\n)*\)( )*;";
         public const string SqlCommand_INSERT_VALUES_REGEX = @"values() *\((.|\n)*\)( )*;";
         public const int POSTGRESS_MAX_TABLE_COLUMNS_REASONABLE = 1600;
-        private static List<SqlCommandInfo> sqlCommands = new List<SqlCommandInfo>
-        {
-            new SqlCommandInfo {Command = SqlCommand_CREATE_TABLE, Type = SqlCommandType.DDL},
-            new SqlCommandInfo {Command = SqlCommand_INSERT_INTO, Type = SqlCommandType.DML},
-            new SqlCommandInfo {Command = SqlCommand_UPDATE, Type = SqlCommandType.DML},
-            new SqlCommandInfo {Command = SqlCommand_COPY, Type = SqlCommandType.DML}
-        };
-
-        public static List<SqlCommandInfo> GetSqlCommands()
-        {
-            return sqlCommands.OrderBy(s => s.Command).ToList();
-        }
 
         public static List<string> GetValidCommands()
         {
