@@ -23,6 +23,7 @@ jobs:
           export TERM="xterm"
           export PATH="$PATH:/root/.dotnet/tools"
           dotnet tool install --global dotnet-sonarscanner || true
+          ls ../workspace/tests/Scrubfu.Tests/
           dotnet sonarscanner begin \
             -k:"$SONAR_PROJECT_KEY" \
             -o:"$SONAR_ORG" \
