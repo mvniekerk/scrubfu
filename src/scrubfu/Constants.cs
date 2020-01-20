@@ -4,9 +4,7 @@
  * License MIT: https://opensource.org/licenses/MIT
  * **************************************************
  */
-﻿using System.Collections.Generic;
-using System.Linq;
-using Scrubfu.Models;
+using System.Collections.Generic;
 
 namespace Scrubfu
 {
