@@ -53,7 +53,10 @@ namespace Scrubfu
             new SqlCommandInfo {Command = SqlCommand_COPY, Type = SqlCommandType.DML}
         };
 
-        public static List<SqlCommandInfo> SqlCommands => sqlCommands.OrderBy(s => s.Command).ToList();
+        public static List<SqlCommandInfo> GetSqlCommands()
+        {
+            return sqlCommands.OrderBy(s => s.Command).ToList();
+        }
 
         public static List<string> GetValidCommands()
         {
