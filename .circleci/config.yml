@@ -26,7 +26,7 @@ jobs:
           dotnet sonarscanner begin \
             -k:"$SONAR_PROJECT_KEY" \
             -o:"$SONAR_ORG" \
-            -d:sonar.host.url=https://sonarcloudio \
+            -d:sonar.host.url=https://sonarcloud.io \
             -d:sonar.login="$SONAR_AUTH_TOKEN" \
             -d:sonar.branch.name=master \
             -d:sonar.test.inclusions="tests/Scrubfu.Tests/**/*" \
