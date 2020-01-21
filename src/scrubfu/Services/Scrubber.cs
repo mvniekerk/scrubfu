@@ -1,11 +1,10 @@
-using System.Reflection.Metadata;
 /**
  * *************************************************
  * Copyright (c) 2019, Grindrod Bank Limited
  * License MIT: https://opensource.org/licenses/MIT
  * **************************************************
  */
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

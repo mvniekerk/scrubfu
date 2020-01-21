@@ -28,7 +28,7 @@ namespace Scrubfu.Tests.CLI_Tests
             File.Delete(inputFilePath);
             File.Delete(outputFilePath);
 
-            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, UseCopy: false, scrubComments: scrubDetails);
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: false, scrubComments: scrubDetails);
             int inputLineCount = File.ReadAllLines(inputFilePath).Length;
 
             new ScrubfuCli().Run(TestHelpers.BuildCommandArgs(inputFilePath, outputFilePath));
@@ -61,7 +61,7 @@ namespace Scrubfu.Tests.CLI_Tests
             File.Delete(inputFilePath);
             File.Delete(outputFilePath);
 
-            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, UseCopy: false, scrubComments: scrubDetails);
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: false, scrubComments: scrubDetails);
             int inputLineCount = File.ReadAllLines(inputFilePath).Length;
 
             new ScrubfuCli().Run(TestHelpers.BuildCommandArgs(inputFilePath, outputFilePath));
@@ -76,6 +76,75 @@ namespace Scrubfu.Tests.CLI_Tests
             {
                 i++;
                 Assert.False(i == Constants.INSERT_TEST_SAMPLE_TEST_LINE_NUMBER && !line.Equals(mask_tag_inserts_sample_line11_result, StringComparison.Ordinal));
+            }
+
+            Assert.True(true);
+
+            File.Delete(inputFilePath);
+            File.Delete(outputFilePath);
+        }
+
+        [Fact]
+        public void Mask_Tag_With_Copy_With_Array()
+        {
+            string randomFileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+            string inputFilePath = string.Concat(TestHelpers.GetOutputFilePath(), randomFileName, "-in.sql");
+            string outputFilePath = string.Concat(TestHelpers.GetOutputFilePath(), randomFileName, "-out.sql");
+            var scrubDetailsArray =  new Dictionary<string, string>() { { "public.employees.email", "~MA[0]:3,2;#;@,.~" } };
+
+            File.Delete(inputFilePath);
+            File.Delete(outputFilePath);
+
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: true, scrubComments: scrubDetailsArray);
+            int inputLineCount = File.ReadAllLines(inputFilePath).Length;
+
+            new ScrubfuCli().Run(TestHelpers.BuildCommandArgs(inputFilePath, outputFilePath));
+
+            Assert.True(File.Exists(outputFilePath));
+
+            var lines = File.ReadAllLines(outputFilePath);
+            Assert.True(lines.Length == inputLineCount);
+
+            var i = 0;
+            foreach (var line in lines)
+            {
+                i++;
+                Assert.False(i == Constants.COPY_TEST_SAMPLE_TEST_LINE_NUMBER && !line.Equals(mask_tag_copy_sample_line12_result, StringComparison.Ordinal));
+            }
+
+            Assert.True(true);
+
+            File.Delete(inputFilePath);
+            File.Delete(outputFilePath);
+        }
+
+
+        [Fact]
+        public void Mask_Tag_With_Insert_With_Array()
+        {
+            string randomFileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+            string inputFilePath = string.Concat(TestHelpers.GetOutputFilePath(), randomFileName, "-in.sql");
+            string outputFilePath = string.Concat(TestHelpers.GetOutputFilePath(), randomFileName, "-out.sql");
+            var scrubDetailsArray = new Dictionary<string, string>() { { "public.employees.email", "~MA[0]:3,2;#;@,.~" } };
+
+            File.Delete(inputFilePath);
+            File.Delete(outputFilePath);
+
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: false, useArray: true, scrubComments: scrubDetailsArray);
+            int inputLineCount = File.ReadAllLines(inputFilePath).Length;
+
+            new ScrubfuCli().Run(TestHelpers.BuildCommandArgs(inputFilePath, outputFilePath));
+
+            Assert.True(File.Exists(outputFilePath));
+
+            var lines = File.ReadAllLines(outputFilePath);
+            Assert.True(lines.Length == inputLineCount);
+
+            var i = 0;
+            foreach (var line in lines)
+            {
+                i++;
+                Assert.False(i == Constants.COPY_TEST_SAMPLE_TEST_LINE_NUMBER && !line.Equals(mask_tag_copy_sample_line12_result, StringComparison.Ordinal));
             }
 
             Assert.True(true);

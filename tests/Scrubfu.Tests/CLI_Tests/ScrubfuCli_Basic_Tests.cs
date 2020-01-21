@@ -137,7 +137,7 @@ namespace Scrubfu.Tests.CLI_Tests
             File.Delete(inputFilePath);
             File.Delete(outputFilePath);
 
-            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, UseCopy: false);
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: false);
 
             new ScrubfuCli().Run(args);
 
@@ -168,7 +168,7 @@ namespace Scrubfu.Tests.CLI_Tests
             if (File.Exists(outputFilePath))
                 File.Delete(outputFilePath);
 
-            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, UseCopy: false);
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: false);
 
             new ScrubfuCli().Run(args);
 

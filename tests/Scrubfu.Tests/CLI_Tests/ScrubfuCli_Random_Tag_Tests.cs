@@ -26,7 +26,7 @@ namespace Scrubfu.Tests.CLI_Tests
             File.Delete(inputFilePath);
             File.Delete(outputFilePath);
 
-            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, UseCopy: false, scrubComments: scrubDetails);
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: false, scrubComments: scrubDetails);
             int inputLineCount = File.ReadAllLines(inputFilePath).Length;
 
             new ScrubfuCli().Run(TestHelpers.BuildCommandArgs(inputFilePath, outputFilePath, logFilePath));
@@ -119,7 +119,7 @@ namespace Scrubfu.Tests.CLI_Tests
             File.Delete(inputFilePath);
             File.Delete(outputFilePath);
 
-            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, UseCopy: false, scrubComments: scrubDetails);
+            TestHelpers.GenerateSamplePGDumpFile(inputFilePath, useCopy: true, useArray: false, scrubComments: scrubDetails);
             int inputLineCount = File.ReadAllLines(inputFilePath).Length;
 
             new ScrubfuCli().Run(TestHelpers.BuildCommandArgs(inputFilePath, outputFilePath, logFilePath));

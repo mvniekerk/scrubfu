@@ -67,10 +67,7 @@ namespace Scrubfu.Tags
         {
             // Remove leading and trailing single quotes, but leave any single quotes that are meant to be part of the ignore string
             for (var i = 0; i < options.IgnoreStrings.Length; i++)
-            {   
-                options.IgnoreStrings[i] = options.IgnoreStrings[i].RemoveSurroundingQuotes();
-                options.IgnoreStrings[i] = Regex.Unescape(options.IgnoreStrings[i]);
-            }
+                options.IgnoreStrings[i] = Regex.Unescape(options.IgnoreStrings[i].RemoveSurroundingQuotes());
         }
 
         private static bool ShouldMaskFullText(int textLength, int offsetStart, int maskCharTotal)
